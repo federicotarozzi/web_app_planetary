@@ -22,7 +22,7 @@ import rioxarray
 
 def main():
     # Streamlit interface for inputs
-    st.title("ERA5  Data Download")
+    st.title("ERA5 Planetary Data Download")
     start_date = st.date_input("Start date", value=datetime(1995, 1, 1))
     end_date = st.date_input("End date", value=datetime(1995, 12, 31))
     
