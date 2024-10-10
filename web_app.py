@@ -250,7 +250,7 @@ def fetch_and_map_copernicus_dem(location, start_date, end_date):
     
     # Perform the search for Sentinel-2 data
     search = catalog.search(
-        collections=[""cop-dem-glo-30""],
+        collections=["cop-dem-glo-30"],
         bbox=location,
         limit=1,
     )
