@@ -242,15 +242,39 @@ def main():
         # Mapbox access token
         
         
-      
+      def fetch_copernicus_dem(location):
+    # Setup the Planetary Computer catalog
+    catalog = Client.open(
+        "https://planetarycomputer.microsoft.com/api/stac/v1",
+        modifier=planetary_computer.sign_inplace,
+    )
+
+    # Search for DEM data (cop-dem-glo-30) for the given bounding box (location)
+    search = catalog.search(
+        collections=["cop-dem-glo-30"],
+        intersects={
+            "type": "Polygon",
+            "coordinates": [[
+                [location[2], location[0]],  # (lon_min, lat_min)
+                [location[3], location[0]],  # (lon_max, lat_min)
+                [location[3], location[1]],  # (lon_max, lat_max)
+                [location[2], location[1]],  # (lon_min, lat_max)
+                [location[2], location[0]]   # Close the polygon
+            ]]
+        }
+    )
+    
+    # Retrieve items
+    items = list(search.get_items())
+    st.write(f"Returned {len(items)} items")
+
+    # If items found, display their details
+    if items:
+        for item in items:
+            st.write(item.to_dict())
         
        
         
-        
-
-
-
-    
  
 
 if __name__ == "__main__":
