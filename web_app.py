@@ -242,7 +242,7 @@ def main():
         # Mapbox access token
         
         
-      def fetch_copernicus_dem(location):
+def fetch_copernicus_dem(location):
     # Setup the Planetary Computer catalog
     catalog = Client.open(
         "https://planetarycomputer.microsoft.com/api/stac/v1",
