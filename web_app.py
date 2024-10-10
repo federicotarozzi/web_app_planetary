@@ -234,6 +234,11 @@ def main():
         
         location = (lon_min, lat_min, lon_max, lat_max)  # Example bounding box (min_lon, min_lat, max_lon, max_lat) 
         fetch_and_map_sentinel2(location, select_start_date, select_end_date)
+    if st.button('Copernicus Dem Map'):
+        
+        location = (lon_min, lat_min, lon_max, lat_max)  # Example bounding box (min_lon, min_lat, max_lon, max_lat) 
+        fetch_and_map_copernicus_dem(location, select_start_date, select_end_date)
+
 
 
 
